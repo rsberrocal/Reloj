@@ -5,37 +5,31 @@
  */
 package reloj;
 
+import javafx.application.Application;
+import static javafx.application.Application.launch;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 /**
  *
  * @author Richard
  */
-public class Reloj {
+public class Reloj extends Application {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) throws InterruptedException {
-        // TODO code application logic here
-        int horas = 0, minutos = 0, segundos = 0;
-        int inf = 2;
-        while (inf == 2) {
-            segundos++;
-            if (segundos >= 60) {
-                minutos++;
-                segundos = 0;
-            }
-            if (minutos >= 60) {
-                horas++;
-                minutos = 0;
-            }
-            if (horas >= 24) {
-                horas = 0;
-            }
-            System.out.println("Horas:" + horas);
-            System.out.println("Minutos:" + minutos);
-            System.out.println("Segundos" + segundos);
-            
-        }
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("reloj_fxml.fxml"));
+
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.setTitle("Formulari Avançat");
+        stage.show();
     }
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
